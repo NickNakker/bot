@@ -3,6 +3,7 @@ from telebot import types
 import currencyapicom
 
 
+
 bot = telebot.TeleBot('7838750038:AAFnw6cM7jYSvy7DuceiKjKuGfQjiCfiisQ')
 
 """"
@@ -17,6 +18,8 @@ def url(message):
 def get_text_messages(message):
     client = currencyapicom.Client('cur_live_Ijb19el2Io78pFCjlmYgUyI31Oc6eNBfSAKAjb7z')
 
+    if str(message.text).upper() == '/start'.upper():
+        bot.send_message(message.from_user.id, 'Привет, введи текст на латыни')
 
     result = client.historical('02-02-2021')
 
