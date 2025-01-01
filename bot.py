@@ -20,11 +20,11 @@ def get_text_messages(message):
 
     result = client.historical('02-02-2021')
 
-    cur = message.text
+    cur = str(message.text).upper()
 
     if message.text:
-        d = result[cur]['value']
-        b = result[cur]['code'] + str(d)
+        d = result['data'][cur]['value']
+        b = result['data'][cur]['code'] + ' ' + str(d)
         bot.send_message(message.from_user.id, b)
 
 
