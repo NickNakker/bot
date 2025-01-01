@@ -18,7 +18,7 @@ def get_text_messages(message):
     client = currencyapicom.Client('cur_live_Ijb19el2Io78pFCjlmYgUyI31Oc6eNBfSAKAjb7z')
 
 
-    result = client.historical(f'02-02-2021')
+    result = client.historical('02-02-2021')
 
     cur = message.text
 
