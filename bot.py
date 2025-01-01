@@ -20,25 +20,29 @@ def get_text_messages(message):
 
     if str(message.text).upper() == '/start'.upper():
         bot.send_message(message.from_user.id, 'Привет, введи текст на латыни')
-
-    result = client.historical('02-02-2021')
-
-    cur = str(message.text).upper()
-
-    if message.text:
-        d = result['data'][cur]['value']
-        b = result['data'][cur]['code'] + ' ' + str(d)
-        bot.send_message(message.from_user.id, b)
-
-
-    """
-        if message.text == "Привет":
-        bot.send_message(message.from_user.id, "Привет, чем я могу тебе помочь?")
-    elif message.text == "/help":
-        bot.send_message(message.from_user.id, "Напиши привет")
+    
     else:
-        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+        try:
+            result = client.historical('02-02-2021')
+
+            cur = str(message.text).upper()
+
+            if message.text:
+                d = result['data'][cur]['value']
+                b = result['data'][cur]['code'] + ' ' + str(d)
+                bot.send_message(message.from_user.id, b)
+        except:
+            bot.send_message(message.from_user.id, 'Нет такой валюты')
+
+
         """
+            if message.text == "Привет":
+            bot.send_message(message.from_user.id, "Привет, чем я могу тебе помочь?")
+        elif message.text == "/help":
+            bot.send_message(message.from_user.id, "Напиши привет")
+        else:
+            bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+            """
     
 
         
