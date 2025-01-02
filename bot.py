@@ -2,9 +2,9 @@ import telebot
 from telebot import types
 import currencyapicom
 
-
-
-bot = telebot.TeleBot('7838750038:AAFnw6cM7jYSvy7DuceiKjKuGfQjiCfiisQ')
+with open('.gitignore', 'r') as data:
+    bot = telebot.TeleBot(list(data)[0])
+    cur_api_key = list(data)[2]
 
 """"
 @bot.message_handler(commands = ['start'])
@@ -16,7 +16,9 @@ def url(message):
 """
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    client = currencyapicom.Client('cur_live_Ijb19el2Io78pFCjlmYgUyI31Oc6eNBfSAKAjb7z')
+    client = currencyapicom.Client(cur_api_key)
+
+    button1 = types.ChatLocation()
 
     if str(message.text).upper() == '/start'.upper():
         bot.send_message(message.from_user.id, 'Привет, введи текст на латыни')
